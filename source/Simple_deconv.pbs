@@ -1,0 +1,14 @@
+#PBS -N autoencoder_0506_real_psf_real_testPSNR30_0518_few_tv_1
+#PBS -o /gdata/zhoutk/Deconv/autoencoder_0506_real_psf_real_testPSNR30_0518_few_tv_1.out
+#PBS -e /gdata/zhoutk/Deconv/autoencoder_0506_real_psf_real_testPSNR30_0518_few_tv_1.err
+#PBS -l nodes=1:gpus=2:D
+#PBS -r y
+cd $PBS_O_WORKDIR
+echo Time is 'date'
+echo Directory is $PWD
+echo This job rns on following nodes:
+cat $PBS_NODEFILE
+cat $PBS_GPUFILE
+startdocker -D /gdata/zhoutk -P /ghome/zhoutk -s DeconvNet/source/deconv.py bit:5000/deepo
+
+
